@@ -1,6 +1,7 @@
 import React from 'react';
-import './PlaceList.css';
+import './PlaceList.scss';
 import Card from '../../shared/components/UIElements/Card';
+import PlaceItem from './PlaceItem';
 
 function PlaceList(props) {
   if(props.items.length === 0) {
@@ -13,9 +14,20 @@ function PlaceList(props) {
   }
 
   return (
-    <div>
-      
-    </div>
+    <ul className="place-list">
+      {props.items.map(place => 
+        <PlaceItem 
+          key={place.div} 
+          id={place.id}
+          image={place.imageUrl}
+          title={place.title}
+          description={place.description}
+          address={place.address}
+          creatorId={place.creator}
+          coordinates={place.location}
+        />
+        )}
+    </ul>
   )
 }
 
